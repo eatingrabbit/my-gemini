@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CarrotPage extends StatelessWidget {
   const CarrotPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.white,
           body: Column(
-            children: [CarrotCardView()],
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Get.back(result: 'hello');
+                },
+                child: Text('Get back'),
+              ),
+              CarrotCardView()
+            ],
           )),
     );
   }
@@ -33,8 +42,7 @@ class _CarrotCardViewState extends State<CarrotCardView> {
             padding: EdgeInsets.zero,
             backgroundColor: Colors.white,
             elevation: 0,
-            surfaceTintColor: Colors.white,
-            overlayColor: Colors.grey),
+            surfaceTintColor: Colors.white),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           decoration: const BoxDecoration(
@@ -64,12 +72,12 @@ class _CarrotCardViewState extends State<CarrotCardView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       crossAxisAlignment:CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: const Text(
-                            '고디바 더블 초콜릿 소프트 아이스크림 1+1',
+                          child: Text(
+                            Get.arguments['name'],
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_gemini/carrot_page.dart';
+import 'package:get/get.dart';
+import 'package:my_gemini/inject_dependencies.dart';
+import 'package:my_gemini/routes/pages.dart';
 
-void main() {
+void main() async{
+  await injectDependencies();
   runApp(const MyApp());
 }
 
@@ -10,13 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CarrotPage(),
+      getPages: Pages.allPages,
     );
   }
 }
